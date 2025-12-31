@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Simran 🤍</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #1b1b3a, #000);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 26px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      max-width: 380px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 18px;
+    }
+
+    .steps {
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .step span {
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff5fa2, #ff9a9e);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 10px;
+      color: #fff;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff5fa2, #ff9a9e);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(255,95,162,0.5);
+    }
+
+    .hidden { display: none; }
+
+    .message {
+      margin-top: 18px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      min-height: 160px;
+    }
+
+    .heart {
+      font-size: 1.6rem;
+      animation: beat 1.2s infinite;
+      margin: 10px 0;
+    }
+
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    /* floating hearts */
+    .floating-heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- background music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9b0b94c7b1.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Scan for a New Year Surprise 🌙</h1>
+    <p class="subtitle">Just follow these little steps, Simran 🤍</p>
+
+    <div class="steps" id="steps">
+      <div class="step"><span>1</span>Open your camera 📸</div>
+      <div class="step"><span>2</span>Scan this QR ✨</div>
+      <div class="step"><span>3</span>Tap the link 💌</div>
+      <div class="step"><span>4</span>Read till the end 🤍</div>
+    </div>
+
+    <button onclick="openSurprise()">Open My Heart 💗</button>
+
+    <div class="message hidden" id="message"></div>
+  </div>
+
+  <script>
+    const text = `Happy New Year, Simran 🤍\n\nAs the world steps into a new year, my heart quietly whispers your name. Distance may separate us, but it has never lessened what I feel for you.\n\nI miss you, Nonu… in ways words can’t explain. I miss your presence, your voice, and the comfort of you.\n\nLove you, Baby… softly, deeply, endlessly. Love you, Jaan, in every dream I carry of us.\n\nThis year, I only wish for us — more love, more patience, and one day, fewer miles between our hearts.\n\nNo matter how far you are, you live in my every thought, every prayer, and every tomorrow I dream of. Until the day distance turns into closeness, hold my love with you — it’s always yours. Miss you, Nonu. Love you, Jaan. 🤍\n\nAlways yours,\nMishthi 🤍`;
+
+    function openSurprise() {
+      document.getElementById('steps').classList.add('hidden');
+      const msg = document.getElementById('message');
+      msg.classList.remove('hidden');
+      let i = 0;
+      const interval = setInterval(() => {
+        msg.innerHTML = msg.innerHTML + text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, 40);
+    }
+
+    // floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.innerText = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }, 500);
+  </script>
+</body>
+</html>
